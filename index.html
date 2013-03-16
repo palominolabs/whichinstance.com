@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Amazon EC2 Instance Types Cost Grapher</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+</head>
+<body>
+<!--[if lt IE 7]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a
+        href="http://browsehappy.com/">upgrade your browser</a> or <a
+        href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your
+    experience.</p><![endif]-->
+
+<h1>Amazon EC2 Instance Types<span>Cost Grapher</span></h1>
+
+<div id="spinner"><p>Thinking...</p></div>
+
+<div id="controls">
+    <p>
+      Select the <a href="https://aws.amazon.com/ec2/instance-types/">instance type</a> configuration you're interested in:
+    </p>
+
+    <div class="form-group">
+		<label for="region">region</label>
+		<select id="region">
+			<option value="us-east" selected>us-east (N. Va.)</option>
+			<option value="us-west">us-west (N. Ca.)</option>
+			<option value="us-west-2">us-west-2 (Or.)</option>
+			<option value="eu-ireland">eu-ireland</option>
+			<option value="apac-sin">apac-sin (Singapore)</option>
+			<option value="apac-tokyo">apac-tokyo</option>
+			<option value="apac-syd">apac-syd</option>
+			<option value="sa-east-1">sa-east-1 (Sao Paolo)</option>
+		</select>
+    </div>
+
+    <div class="form-group">
+		<label for="insType">instance type</label>
+		<select id="insType">
+			<option value="micro" selected>Micro</option>
+			<option value="std">Standard 1st gen</option>
+			<option value="std2">Standard 2nd gen</option>
+			<option value="hiMem">High memory</option>
+			<option value="hiCpu">High CPU</option>
+			<option value="clusterCompute">Cluster compute</option>
+			<option value="hiMemClusterCompute">High memory cluster</option>
+			<option value="clusterGpu">Cluster GPU</option>
+			<option value="hiIo">High IO</option>
+			<option value="hiStorage">High storage</option>
+		</select>
+    </div>
+
+    <div class="form-group">
+		<label for="insSize">instance size</label>
+		<select id="insSize">
+			<option value="u" selected>Micro</option>
+			<option value="sm">Small</option>
+			<option value="med">Medium</option>
+			<option value="lg">Large</option>
+			<option value="xl">Extra Large</option>
+			<option value="xxl">Double Extra Large</option>
+			<option value="xxxxl">Quadruple Extra Large</option>
+			<option value="xxxxxxxxl">Octuple Extra Large</option>
+		</select>
+    </div>
+
+    <div class="form-group">
+		<label for="days">days</label>
+		<input id="days" value="365"/>
+    </div>
+
+</div>
+
+<div id="message"></div>
+
+<div id="container"></div>
+
+<footer>
+    <div id="form">
+
+        <form id="form1" name="form1" class="wufoo topLabel page" autocomplete="off" enctype="multipart/form-data"
+              method="post" novalidate
+              action="https://palominolabs.wufoo.com/forms/z7x3p3/#public">
+
+            <header id="header" class="info">
+                <h2>Looking for AWS experts?</h2>
+				<p>
+				  We at <a href="http://palominolabs.com">Palomino Labs</a> made this grapher. We utilize AWS services a lot, and we know our stuff. So, if you can use our expertise, send us a message!
+				</p>
+            </header>
+
+            <ul>
+
+                <li id="foli3" class="notranslate">
+                    <label class="desc" id="title3" for="Field3"> Your Email </label>
+
+                    <div>
+                        <input id="Field3" name="Field3" type="email" spellcheck="false" class="field text medium"
+                               value="" maxlength="255" tabindex="1" required/>
+                    </div>
+                </li>
+                <li id="foli4" class="notranslate">
+                    <label class="desc" id="title4" for="Field4"> Message </label>
+
+                    <div>
+                        <textarea id="Field4"
+                                  name="Field4"
+                                  class="field textarea medium"
+                                  spellcheck="true"
+                                  rows="10" cols="50"
+                                  tabindex="2"
+                                  onkeyup=""
+                                ></textarea>
+
+                    </div>
+                </li>
+                <li class="buttons ">
+                    <div>
+
+                        <input id="saveForm" name="saveForm" class="btTxt submit"
+                               type="submit" value="Send"
+                                />
+                    </div>
+                </li>
+
+                <li class="hide">
+                    <label for="comment">Do Not Fill This Out</label> 
+                    
+                    <textarea name="comment" id="comment" rows="1" cols="1"></textarea> 
+                    <input type="hidden" id="idstamp" name="idstamp" value="75M7XLMtjwXObzHi/ZsvIXh3AbM6rBIdLa0i0EkLfbM="/>
+                </li>
+            </ul>
+        </form>
+
+        <hr>
+    
+	    <p>
+           <a href="http://palominolabs.com">Palomino Labs</a> is a product development and agile implementation consultancy based in Redwood City, California. A close-knit, highly collaborative, and enviably efficient team of experienced software developers and product strategists, we deliver higher quality products in less time. Using a Lean development approach continually and meticulously refined over six years, we can help turn any idea into reality. The more challenging the problem, the better the results.
+        </p>
+
+    </div>
+
+</footer>
+
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+
+<script src="http://code.highcharts.com/2.3.5/highcharts.js"></script>
+
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-30952978-7']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
+</body>
+</html>
