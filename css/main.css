@@ -150,6 +150,8 @@ h1 span {
 
 #chartMsg {
     margin-bottom: 0;
+    font-size:75%;
+    color:#8e8e8e;
 }
 
 footer {
@@ -162,7 +164,7 @@ footer p {
 	width:500px;
 	text-align:justify;
 	margin:10px auto;
-	color:#8e8e8e;
+	color:#686868;
 }
 
 #spinner {
