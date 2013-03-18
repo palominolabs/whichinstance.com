@@ -6,7 +6,7 @@ $(document).ready(function() {
         reservedData = {'heavy': null, 'medium': null, 'light': null},
         chart = new Highcharts.Chart({
             chart:       {
-                renderTo: 'container',
+                renderTo: 'chart',
                 type:     'line'
             },
             title:       {

@@ -109,11 +109,12 @@ h1 span {
 	font-size:75%;
 }
 
-#controls, #container {
+#controls, #chartContainer {
 	border:1px solid #ccc;
 	border-radius:5px;
 	background:#f2f2f2;
 	overflow:auto;
+    padding:20px;
 }
 
 #controls {
@@ -143,9 +144,12 @@ h1 span {
 	color:#c10000;
 }
 
-#container {
+#chart {
     height: 600px;
-    padding:20px;
+}
+
+#chartMsg {
+    margin-bottom: 0;
 }
 
 footer {
