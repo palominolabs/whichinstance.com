@@ -155,9 +155,9 @@ $(document).ready(function() {
                 return false;
             });
         },
-        updateReservedData = function(utilization, includeHourlyCostIncrementally) {
-            if (reservedData[utilization] == null) {
-                console.log('reserved ' + utilization + ' not loaded');
+        updateReservedData = function(utilizationLevelName, includeHourlyCostIncrementally) {
+            if (reservedData[utilizationLevelName] == null) {
+                console.log('reserved ' + utilizationLevelName + ' not loaded');
                 return;
             }
 
@@ -165,7 +165,7 @@ $(document).ready(function() {
                 insTypeCode = getInstanceType('reserved'),
                 sizeCode = getInstanceSize();
 
-            $.each(reservedData[utilization].config.regions, function(_, region) {
+            $.each(reservedData[utilizationLevelName].config.regions, function(_, region) {
                 if (region.region != regionCode) {
                     return true;
                 }
@@ -213,7 +213,7 @@ $(document).ready(function() {
                             }
                             chart.addSeries({
                                 data: seriesData,
-                                name: "1 yr " + utilization
+                                name: "1 yr " + utilizationLevelName
                             });
                         }
 
@@ -235,7 +235,7 @@ $(document).ready(function() {
 
                             chart.addSeries({
                                 data: seriesData,
-                                name: "3 yr " + utilization
+                                name: "3 yr " + utilizationLevelName
                             });
                         }
 
