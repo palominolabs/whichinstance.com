@@ -98,6 +98,7 @@ $(document).ready(function() {
         },
         instanceFoundSomewhere = false,
         daysToShow = 365,
+        utilizationFraction = 1.0,
         updateOnDemandData = function() {
 
             if (onDemandData == null) {
@@ -134,7 +135,7 @@ $(document).ready(function() {
                             pricePerHour = sizeValue.prices[currency];
                             seriesData.length = 0;
                             for (var d = 0; d < daysToShow; d++) {
-                                seriesData.push(d * pricePerHour * 24);
+                                seriesData.push(d * pricePerHour * 24 * utilizationFraction);
                             }
 
                             chart.addSeries({
@@ -203,7 +204,7 @@ $(document).ready(function() {
                             termLength = 365;
                             for (d = 0; d < daysToShow; d++) {
                                 if (includeHourlyCostIncrementally) {
-                                    seriesData.push(priceData.yrTerm1 * (1 + Math.floor(d / termLength)) + d * pricePerHour * 24);
+                                    seriesData.push(priceData.yrTerm1 * (1 + Math.floor(d / termLength)) + d * pricePerHour * 24 * utilizationFraction);
                                 } else {
                                     seriesData.push(priceData.yrTerm1 * (1 + Math.floor(d / termLength)) + termLength * pricePerHour * 24);
                                 }
@@ -222,7 +223,7 @@ $(document).ready(function() {
                             termLength = 365 * 3;
                             for (d = 0; d < daysToShow; d++) {
                                 if (includeHourlyCostIncrementally) {
-                                    seriesData.push(priceData.yrTerm3 * (1 + Math.floor(d / termLength)) + d * pricePerHour * 24);
+                                    seriesData.push(priceData.yrTerm3 * (1 + Math.floor(d / termLength)) + d * pricePerHour * 24 * utilizationFraction);
                                 } else {
                                     seriesData.push(priceData.yrTerm3 * (1 + Math.floor(d / termLength)) + termLength * pricePerHour * 24);
                                 }
@@ -257,6 +258,7 @@ $(document).ready(function() {
                 instanceFoundSomewhere = false;
 
                 daysToShow = parseInt($('#days').val());
+                utilizationFraction = parseFloat($('#utilization').val()) / 100.0;
 
                 updateOnDemandData();
                 $.each(['medium', 'light'], function(_, obj) {
@@ -285,7 +287,7 @@ $(document).ready(function() {
             chart.setTitle({text: title});
         };
 
-    $.each(['#region', '#insType', '#insSize', '#days'], function(_, obj) {
+    $.each(['#region', '#insType', '#insSize', '#days', '#utilization'], function(_, obj) {
         $(obj).change(onChange);
     });
 

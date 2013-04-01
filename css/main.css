@@ -130,6 +130,10 @@ h1 span {
 	font-weight:bold;
 }
 
+#controls input {
+    width: 3em;
+}
+
 .form-group {
 	margin:0 10px 10px 0;
 	float:left;
