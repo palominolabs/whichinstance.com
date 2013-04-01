@@ -183,7 +183,8 @@ $(document).ready(function() {
                         var priceData = {},
                             d,
                             f,
-                            termLength;
+                            termLength,
+                            termCounter;
 
                         // assemble a map of the various value columns
                         $.each(size.valueColumns, function(_, priceSpec) {
@@ -203,10 +204,11 @@ $(document).ready(function() {
                             pricePerHour = priceData.yrTerm1Hourly;
                             termLength = 365;
                             for (d = 0; d < daysToShow; d++) {
+                                termCounter = 1 + Math.floor(d / termLength);
                                 if (includeHourlyCostIncrementally) {
-                                    seriesData.push(priceData.yrTerm1 * (1 + Math.floor(d / termLength)) + d * pricePerHour * 24 * utilizationFraction);
+                                    seriesData.push(priceData.yrTerm1 * termCounter + d * pricePerHour * 24 * utilizationFraction);
                                 } else {
-                                    seriesData.push(priceData.yrTerm1 * (1 + Math.floor(d / termLength)) + termLength * pricePerHour * 24);
+                                    seriesData.push((priceData.yrTerm1 + termLength * pricePerHour * 24) * termCounter);
                                 }
                             }
                             chart.addSeries({
@@ -222,10 +224,12 @@ $(document).ready(function() {
                             pricePerHour = priceData.yrTerm3Hourly;
                             termLength = 365 * 3;
                             for (d = 0; d < daysToShow; d++) {
+                                termCounter = 1 + Math.floor(d / termLength);
+
                                 if (includeHourlyCostIncrementally) {
-                                    seriesData.push(priceData.yrTerm3 * (1 + Math.floor(d / termLength)) + d * pricePerHour * 24 * utilizationFraction);
+                                    seriesData.push(priceData.yrTerm3 * termCounter + d * pricePerHour * 24 * utilizationFraction);
                                 } else {
-                                    seriesData.push(priceData.yrTerm3 * (1 + Math.floor(d / termLength)) + termLength * pricePerHour * 24);
+                                    seriesData.push((priceData.yrTerm3 + termLength * pricePerHour * 24) * termCounter);
                                 }
                             }
 
