@@ -19,7 +19,6 @@
                {
                   "type":"generalCurrentGen",
                   "sizes":[
-                     
                             {
                                 "size": "m3.medium",
                                 "vCPU": "1",
@@ -50,36 +49,36 @@
                                     }
                                 ]
                             },
-					{
-                        "size":"m3.xlarge",
-                        "vCPU":"4",
-                        "ECU":"13",
-                        "memoryGiB":"15",
-                        "storageGB":"2 x 40 SSD",
-                        "valueColumns":[
-                           {
-                              "name":"linux",
-                              "prices":{
-                                 "USD":"0.450"
-                              }
-                           }
-                        ]
-                     },
-                     {
-                        "size":"m3.2xlarge",
-                        "vCPU":"8",
-                        "ECU":"26",
-                        "memoryGiB":"30",
-                        "storageGB":"2 x 80 SSD",
-                        "valueColumns":[
-                           {
-                              "name":"linux",
-                              "prices":{
-                                 "USD":"0.900"
-                              }
-                           }
-                        ]
-                     }
+                            {
+                                "size":"m3.xlarge",
+                                "vCPU":"4",
+                                "ECU":"13",
+                                "memoryGiB":"15",
+                                "storageGB":"2 x 40 SSD",
+                                "valueColumns":[
+                                    {
+                                        "name":"linux",
+                                        "prices":{
+                                            "USD":"0.450"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "size":"m3.2xlarge",
+                                "vCPU":"8",
+                                "ECU":"26",
+                                "memoryGiB":"30",
+                                "storageGB":"2 x 80 SSD",
+                                "valueColumns":[
+                                {
+                                    "name":"linux",
+                                    "prices":{
+                                        "USD":"0.900"
+                                    }
+                                }
+                                ]
+                            }
                   ]
                },
                {

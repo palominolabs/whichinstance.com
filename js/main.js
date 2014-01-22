@@ -37,6 +37,7 @@ $(document).ready(function() {
                 }
             }
         }),
+
         regionCodeConfig = {
             'onDemand': {
                 'us-east':    'us-east',
@@ -59,56 +60,36 @@ $(document).ready(function() {
                 'sa-east-1':  'sa-east-1'
             }
         },
-        insTypeCodeConfig = {
-            'onDemand': {
-                'micro':               'uODI',
-                'std':                 'stdODI',
-                'std2':                'secgenstdODI',
-                'hiMem':               'hiMemODI',
-                'hiCpu':               'hiCPUODI',
-                'clusterCompute':      'clusterComputeI',
-                'hiMemClusterCompute': 'clusterHiMemODI',
-                'clusterGpu':          'clusterGPUI',
-                'hiIo':                'hiIoODI',
-                'hiStorage':           'hiStoreODI'
-            },
-            'reserved': {
-                'micro':               'uResI',
-                'std':                 'stdResI',
-                'std2':                'secgenstdResI',
-                'hiMem':               'hiMemResI',
-                'hiCpu':               'hiCPUResI',
-                'clusterCompute':      'clusterCompResI',
-                'hiMemClusterCompute': 'clusterHiMemResI',
-                'clusterGpu':          'clusterGPUResI',
-                'hiIo':                'hiIoResI',
-                'hiStorage':           'hiStoreResI'
-            }
-        },
+
+        instanceSizes = {},
+        instanceSizeToType = {},
         seriesData = [],
         pricePerHour,
-        getRegionCode = function(onDemandOrInstance) {
-            return regionCodeConfig[onDemandOrInstance][$('#region').find(':selected').val()];
-        },
-        getInstanceType = function(onDemandOrInstance) {
-            return insTypeCodeConfig[onDemandOrInstance][$('#insType').find(':selected').val()];
-        },
-        getInstanceSize = function() {
-            return $('#insSize').find(':selected').val();
-        },
         instanceFoundSomewhere = false,
         daysToShow = 365,
         utilizationFraction = 1.0,
-        updateOnDemandData = function() {
 
+        getRegionCode = function(onDemandOrInstance) {
+            return regionCodeConfig[onDemandOrInstance][$('#region').find(':selected').val()];
+        },
+
+        getInstanceType = function(instanceSize) {
+            return instanceSizeToType[instanceSize];
+        },
+
+        getInstanceSize = function() {
+            return $('#insSize').find(':selected').val();
+        },
+
+        updateOnDemandData = function() {
             if (onDemandData == null) {
                 console.log('on demand data not loaded');
                 return;
             }
 
             var regionCode = getRegionCode('onDemand'),
-                insTypeCode = getInstanceType('onDemand'),
-                sizeCode = getInstanceSize();
+                sizeCode = getInstanceSize(),
+                insTypeCode = getInstanceType(sizeCode);
 
             $.each(onDemandData.config.regions, function(i, region) {
                 if (region.region != regionCode) {
@@ -155,6 +136,7 @@ $(document).ready(function() {
                 return false;
             });
         },
+
         updateReservedData = function(utilizationLevelName, includeHourlyCostIncrementally) {
             if (reservedData[utilizationLevelName] == null) {
                 console.log('reserved ' + utilizationLevelName + ' not loaded');
@@ -162,8 +144,8 @@ $(document).ready(function() {
             }
 
             var regionCode = getRegionCode('reserved'),
-                insTypeCode = getInstanceType('reserved'),
-                sizeCode = getInstanceSize();
+                sizeCode = getInstanceSize(),
+                insTypeCode = getInstanceType(sizeCode);
 
             $.each(reservedData[utilizationLevelName].config.regions, function(_, region) {
                 if (region.region != regionCode) {
@@ -248,13 +230,14 @@ $(document).ready(function() {
                 return false;
             })
         },
+
         onChange = function() {
 
             $('#spinner').show();
 
             window.setTimeout(function() {
-                // clear the chart
 
+                // clear the chart
                 while (chart.series.length > 0) {
                     chart.series[0].remove();
                 }
@@ -285,6 +268,25 @@ $(document).ready(function() {
             }, 0);
 
         },
+
+        // Build the sizes we know about and their instance type mappings
+        importData = function(data) {
+            $.each(onDemandData.config.regions, function(i, region) {
+                $.each(region.instanceTypes, function(j, insType) {
+                    $.each(insType.sizes, function(k, size) {
+                        instanceSizes[size.size] = true;
+                        instanceSizeToType[size.size] = insType.type;
+                    });
+                });
+            });
+        },
+
+        initializeSizeDropdown = function() {
+            for (var size in instanceSizes) {
+                $("#insSize").append("<option value='" + size + "'>" + size + "</option>");
+            }
+        },
+
         setTitle = function() {
             var title = $('#region').find(':selected').text() + ': ' + $('#insType').find(':selected').text() + '/' +
                 $('#insSize').find(':selected').text();
@@ -295,15 +297,18 @@ $(document).ready(function() {
         $(obj).change(onChange);
     });
 
-    $.getJSON('/js/pricing-on-demand-instances.json',
+    $.getJSON('/js/linux-od.json',
         function(data) {
             onDemandData = data;
 
+            importData(onDemandData);
+
+            initializeSizeDropdown();
             updateOnDemandData();
-        });
+    });
 
     $.each(['medium', 'light'], function(_, obj) {
-        $.getJSON('/js/ri-' + obj + '-linux.json',
+        $.getJSON('/js/linux-ri-' + obj + '.json',
             function(data) {
                 reservedData[obj] = data;
 
@@ -312,7 +317,7 @@ $(document).ready(function() {
     });
 
     $.each(['heavy'], function(_, obj) {
-        $.getJSON('/js/ri-' + obj + '-linux.json',
+        $.getJSON('/js/linux-ri-' + obj + '.json',
             function(data) {
                 reservedData[obj] = data;
 
