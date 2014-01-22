@@ -101,7 +101,6 @@ $(document).ready(function() {
 
                     }
                     $.each(insType.sizes, function(k, size) {
-
                         if (size.size != sizeCode) {
                             return true;
                         }
@@ -232,11 +231,9 @@ $(document).ready(function() {
         },
 
         onChange = function() {
-
             $('#spinner').show();
 
             window.setTimeout(function() {
-
                 // clear the chart
                 while (chart.series.length > 0) {
                     chart.series[0].remove();
@@ -269,18 +266,6 @@ $(document).ready(function() {
 
         },
 
-        // Build the sizes we know about and their instance type mappings
-        importData = function(data) {
-            $.each(onDemandData.config.regions, function(i, region) {
-                $.each(region.instanceTypes, function(j, insType) {
-                    $.each(insType.sizes, function(k, size) {
-                        instanceSizes[size.size] = true;
-                        instanceSizeToType[size.size] = insType.type;
-                    });
-                });
-            });
-        },
-
         initializeSizeDropdown = function() {
             for (var size in instanceSizes) {
                 $("#insSize").append("<option value='" + size + "'>" + size + "</option>");
@@ -301,7 +286,15 @@ $(document).ready(function() {
         function(data) {
             onDemandData = data;
 
-            importData(onDemandData);
+            // Build the sizes we know about and their instance type mappings
+            $.each(onDemandData.config.regions, function(i, region) {
+                $.each(region.instanceTypes, function(j, insType) {
+                    $.each(insType.sizes, function(k, size) {
+                        instanceSizes[size.size] = true;
+                        instanceSizeToType[size.size] = insType.type;
+                    });
+                });
+            });
 
             initializeSizeDropdown();
             updateOnDemandData();
