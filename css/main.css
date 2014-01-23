@@ -131,12 +131,12 @@ header #plLogo {
 #controlsContainer {
   float: left;
   padding: 0 20px 10px;
-  width: 175px;
+  width: 190px;
   margin: 0 auto;
 }
 
 #chartContainer {
-  margin-left: 230px;
+  margin-left: 245px;
 }
 
 #controlsContainer, #message {
@@ -173,7 +173,7 @@ header #plLogo {
 }
 
 #chart {
-  height: 610px;
+  height: 560px;
 }
 
 #heavyMessage {
