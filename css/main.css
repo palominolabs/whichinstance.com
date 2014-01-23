@@ -15,13 +15,13 @@ button,
 input,
 select,
 textarea {
-    color: #222;
+  color: #222;
 }
 
 body {
-    font-size: 1em;
-    line-height: 1.4;
-    font-family: 'Helvetica', sans-serif ;
+  font-size: 1em;
+  line-height: 1.4;
+  font-family: 'Helvetica', sans-serif ;
 }
 
 /*
@@ -31,13 +31,13 @@ body {
  */
 
 ::-moz-selection {
-    background: #b3d4fc;
-    text-shadow: none;
+  background: #b3d4fc;
+  text-shadow: none;
 }
 
 ::selection {
-    background: #b3d4fc;
-    text-shadow: none;
+  background: #b3d4fc;
+  text-shadow: none;
 }
 
 /*
@@ -45,12 +45,12 @@ body {
  */
 
 hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
 }
 
 /*
@@ -58,7 +58,7 @@ hr {
  */
 
 img {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 /*
@@ -66,9 +66,9 @@ img {
  */
 
 fieldset {
-    border: 0;
-    margin: 0;
-    padding: 0;
+  border: 0;
+  margin: 0;
+  padding: 0;
 }
 
 /*
@@ -76,7 +76,7 @@ fieldset {
  */
 
 textarea {
-    resize: vertical;
+  resize: vertical;
 }
 
 /* ==========================================================================
@@ -84,10 +84,10 @@ textarea {
    ========================================================================== */
 
 .chromeframe {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
 }
 
 /* ==========================================================================
@@ -95,154 +95,186 @@ textarea {
    ========================================================================== */
 
 body {
-	padding:20px;
-	background:#fbfbfb url('../img/grey.png');
+  padding:20px;
+  background:#fbfbfb url('../img/grey.png');
 }
 
 h1 {
-	margin-top:0;
-	text-align:center;
+  margin-top: 0;
+  text-align: center;
 }
 
 h1 span {
-	display:block;
-	font-size:75%;
-	color:#686867;
+  display: block;
+  font-size: 75%;
+  color: #505050;
 }
 
-#controls, #chartContainer {
-	border:1px solid #ccc;
-	border-radius:5px;
-	background:rgba(0,0,0,0.05);
-	overflow:auto;
-    padding:20px;
+#palominoTagline {
+  margin-top: -20px;
+  margin-bottom: 8px;
+  font-size: 90%;
+  text-align: center;
+  color: #808080;
 }
 
-#controls {
-	padding:0 20px 10px;
-	width:500px;
-	margin:0 auto;
+#content {
+  width: 100%;
 }
 
-#controls, #message {
-	margin-bottom:20px;
+#controlsContainer, #chartContainer {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: rgba(0,0,0,0.05);
+  overflow: auto;
+  padding: 20px;
 }
 
-#controls label {
-	font-variant:small-caps;
-	font-weight:bold;
-	display:block;
+#controlsContainer {
+  float: left;
+  padding: 0 20px 10px;
+  width: 165px;
+  margin: 0 auto;
 }
 
-#controls input {
-    width: 3em;
+#chartContainer {
+  /*float: right;*/
+  /*width: 850px;*/
+  margin-left: 220px;
+}
+
+#controlsContainer, #message {
+  margin-bottom: 20px;
+}
+
+#controlsContainer label {
+  font-variant:small-caps;
+  font-weight:bold;
+  display:block;
+}
+
+#controlsContainer input {
+  width: 3em;
+}
+
+#days-utilization {
+  float: left;
 }
 
 .form-group {
-	margin:0 10px 10px 0;
-	white-space:nowrap;
+  margin:0 10px 10px 0;
+  white-space:nowrap;
+  float: left;
 }
 
 .form-group:last-of-type {
-	margin:0;
+  margin: 0;
 }
 
-#message {
-	color:#c10000;
+#instanceSizeMessage {
+  clear: both;
+  font-size: 75%;
 }
 
 #chart {
-    height: 600px;
+  height: 600px;
 }
 
 #chartMsg {
-    margin-bottom: 0;
-    font-size:75%;
-    color:#686867;
+  margin-bottom: 0;
+  font-size:75%;
+  color:#686867;
 }
 
+
+#message {
+  color:#c10000;
+}
+
+
 footer {
-	margin-top:20px;
-	font-size:75%;
-	text-align:center;
+  clear: both;
+  margin-top:20px;
+  font-size:75%;
+  text-align:center;
 }
 
 footer p {
-	width:500px;
-	text-align:justify;
-	margin:10px auto;
-	color:#686868;
+  width:500px;
+  text-align:justify;
+  margin:10px auto;
+  color:#686868;
 }
 
 #spinner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: none;
-    background-color: rgba(0,0,0,0.2);
-    z-index: 1000000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background-color: rgba(0,0,0,0.2);
+  z-index: 1000000;
 }
 
 #spinner p {
-    font-size: 5em;
-    color: black;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 300px;
-    position: absolute;
-    top: 50%;
-    margin: -150px auto 0 auto;
-    height: 300px;
-    width: 100%;
+  font-size: 5em;
+  color: black;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 300px;
+  position: absolute;
+  top: 50%;
+  margin: -150px auto 0 auto;
+  height: 300px;
+  width: 100%;
 }
 
 #form {
-	border:1px solid #ccc;
-	border-radius:5px;
-	background:rgba(0,0,0,0.05);
-	padding:20px;
-    font-family: inherit;
-    width: 500px;
-    margin: 0 auto;
-    text-align: left;
+  border:1px solid #ccc;
+  border-radius:5px;
+  background:rgba(0,0,0,0.05);
+  padding:20px;
+  font-family: inherit;
+  width: 500px;
+  margin: 0 auto;
+  text-align: left;
 }
 
 #form h2 {
-	margin:0;
+  margin:0;
 }
 
 #form h2 + p {
-	margin-top:5px;
+  margin-top:5px;
 }
 
 #form ul {
-    padding: 0;
-    margin: 15px 0 0 0;
+  padding: 0;
+  margin: 15px 0 0 0;
 }
 
 #form li {
-    list-style: none;
-    margin-top: 10px;
+  list-style: none;
+  margin-top: 10px;
 }
 
 #form label {
-    line-height: 180%;
-    font-weight: bold;
+  line-height: 180%;
+  font-weight: bold;
 }
 
 #form input[type=email] {
-    width: 50%;
+  width: 50%;
 }
 
 #form textarea {
-    width: 100%;
-    box-sizing:border-box;
+  width: 100%;
+  box-sizing:border-box;
 }
 
 #form .hide {
-    display: none;
+  display: none;
 }
 
 /* ==========================================================================
@@ -254,18 +286,18 @@ footer p {
  */
 
 .ir {
-    background-color: transparent;
-    border: 0;
-    overflow: hidden;
-    /* IE 6/7 fallback */
-    *text-indent: -9999px;
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+  /* IE 6/7 fallback */
+  *text-indent: -9999px;
 }
 
 .ir:before {
-    content: "";
-    display: block;
-    width: 0;
-    height: 150%;
+  content: "";
+  display: block;
+  width: 0;
+  height: 150%;
 }
 
 /*
@@ -273,8 +305,8 @@ footer p {
  */
 
 .hidden {
-    display: none !important;
-    visibility: hidden;
+  display: none !important;
+  visibility: hidden;
 }
 
 /*
@@ -282,14 +314,14 @@ footer p {
  */
 
 .visuallyhidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
 
 /*
@@ -299,12 +331,12 @@ footer p {
 
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
-    clip: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    position: static;
-    width: auto;
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
 }
 
 /*
@@ -312,7 +344,7 @@ footer p {
  */
 
 .invisible {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 /*
@@ -320,21 +352,21 @@ footer p {
  *
  * For modern browsers
  * 1. The space content is one way to avoid an Opera bug when the
- *    `contenteditable` attribute is included anywhere else in the document.
- *    Otherwise it causes space to appear at the top and bottom of elements
- *    that receive the `clearfix` class.
+ *  `contenteditable` attribute is included anywhere else in the document.
+ *  Otherwise it causes space to appear at the top and bottom of elements
+ *  that receive the `clearfix` class.
  * 2. The use of `table` rather than `block` is only necessary if using
- *    `:before` to contain the top-margins of child elements.
+ *  `:before` to contain the top-margins of child elements.
  */
 
 .clearfix:before,
 .clearfix:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
+  content: " "; /* 1 */
+  display: table; /* 2 */
 }
 
 .clearfix:after {
-    clear: both;
+  clear: both;
 }
 
 /*
@@ -343,7 +375,7 @@ footer p {
  */
 
 .clearfix {
-    *zoom: 1;
+  *zoom: 1;
 }
 
 /* ==========================================================================
@@ -353,14 +385,14 @@ footer p {
    ========================================================================== */
 
 @media only screen and (min-width: 35em) {
-    /* Style adjustments for viewports that meet the condition */
+  /* Style adjustments for viewports that meet the condition */
 }
 
 @media print,
-       (-o-min-device-pixel-ratio: 5/4),
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 120dpi) {
-    /* Style adjustments for high resolution devices */
+     (-o-min-device-pixel-ratio: 5/4),
+     (-webkit-min-device-pixel-ratio: 1.25),
+     (min-resolution: 120dpi) {
+  /* Style adjustments for high resolution devices */
 }
 
 /* ==========================================================================
@@ -369,68 +401,68 @@ footer p {
    ========================================================================== */
 
 @media print {
-    * {
-        background: transparent !important;
-        color: #000 !important; /* Black prints faster: h5bp.com/s */
-        box-shadow: none !important;
-        text-shadow: none !important;
-    }
+  * {
+    background: transparent !important;
+    color: #000 !important; /* Black prints faster: h5bp.com/s */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
 
-    a,
-    a:visited {
-        text-decoration: underline;
-    }
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
 
-    a[href]:after {
-        content: " (" attr(href) ")";
-    }
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
 
-    abbr[title]:after {
-        content: " (" attr(title) ")";
-    }
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
 
-    /*
-     * Don't show links for images, or javascript/internal links
-     */
+  /*
+   * Don't show links for images, or javascript/internal links
+   */
 
-    .ir a:after,
-    a[href^="javascript:"]:after,
-    a[href^="#"]:after {
-        content: "";
-    }
+  .ir a:after,
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
 
-    pre,
-    blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
-    }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
 
-    thead {
-        display: table-header-group; /* h5bp.com/t */
-    }
+  thead {
+    display: table-header-group; /* h5bp.com/t */
+  }
 
-    tr,
-    img {
-        page-break-inside: avoid;
-    }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
 
-    img {
-        max-width: 100% !important;
-    }
+  img {
+    max-width: 100% !important;
+  }
 
-    @page {
-        margin: 0.5cm;
-    }
+  @page {
+    margin: 0.5cm;
+  }
 
-    p,
-    h2,
-    h3 {
-        orphans: 3;
-        widows: 3;
-    }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
 
-    h2,
-    h3 {
-        page-break-after: avoid;
-    }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
 }

@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Amazon EC2 Instance Types Cost Grapher</title>
+    <title>Which Instance?</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
@@ -20,51 +20,58 @@
         href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your
     experience.</p><![endif]-->
 
-<h1>Which Instance?<span>Amazon EC2 Instance Type Cost Grapher</span></h1>
+<h1><span>Amazon EC2 Instance Type Cost Grapher</span></h1>
+<div id="palominoTagline">A <a href="http://palominolabs.com">Palomino Labs</a> widget</div>
 
 <div id="spinner"><p>Thinking...</p></div>
 
-<div id="controls">
-    <p>
-      Select the <a href="https://aws.amazon.com/ec2/instance-types/">instance type</a> configuration you're interested in:
-    </p>
-
-    <div class="form-group">
-        <label for="region">region</label>
-        <select id="region">
-            <option value="us-east" selected>us-east (N. Va.)</option>
-            <option value="us-west">us-west (N. Ca.)</option>
-            <option value="us-west-2">us-west-2 (Or.)</option>
-            <option value="eu-ireland">eu-ireland</option>
-            <option value="apac-sin">apac-sin (Singapore)</option>
-            <option value="apac-tokyo">apac-tokyo</option>
-            <option value="apac-syd">apac-syd</option>
-            <option value="sa-east-1">sa-east-1 (Sao Paolo)</option>
-        </select>
-    </div>
-
-    <div class="form-group">
-        <label for="insSize">instance size</label>
-        <select id="insSize">
-        </select>
-    </div>
-
-    <div class="form-group" style="float:left">
-        <label for="days">days</label>
-        <input id="days" value="365"/>
-    </div>
-
-    <div class="form-group" style="float:left">
-        <label for="utilization">utilization</label>
-        <input id="utilization" value="100" title="1-100%"/>%
-    </div>
-    </div>
-
 <div id="message"></div>
 
-<div id="chartContainer">
-    <div id="chart"></div>
-    <p id="chartMsg"><strong>Note on Heavy reserved instances:</strong> We chose to present Heavy reservations as a fixed cost rather than a sloped line because they differ in their billing from other instances—you are charged the hourly rate for use of a Heavy reserved instance <em>whether or not you are using it</em>.  With any  other reserved instance type, you are charged the up-front fee, plus a monthly bill for however many hours you used.  With a Heavy reservation, you are charged an up-front cost, plus a monthly bill for 100% usage, regardless of your actual usage.  At the moment you buy a Heavy reserved instance, you know the total cost for that entire contract. To make it easier to tell where break-even points are for usage over long time periods, we're representing Heavy instances as one fixed cost.</p>
+<div id="content">
+    <div id="controlsContainer">
+        <div class="form-group">
+            <label for="region">region</label>
+            <select id="region">
+                <option value="us-east" selected>us-east (N. Va.)</option>
+                <option value="us-west">us-west (N. Ca.)</option>
+                <option value="us-west-2">us-west-2 (Or.)</option>
+                <option value="eu-ireland">eu-ireland</option>
+                <option value="apac-sin">apac-sin (Singapore)</option>
+                <option value="apac-tokyo">apac-tokyo</option>
+                <option value="apac-syd">apac-syd</option>
+                <option value="sa-east-1">sa-east-1 (Sao Paolo)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="insSize">instance size</label>
+            <select id="insSize">
+            </select>
+        </div>
+
+        <div id="days-utilization">
+            <div class="form-group">
+                <label for="days">days</label>
+                <input id="days" value="365"/>
+            </div>
+
+            <div class="form-group">
+                <label for="utilization">utilization</label>
+                <input id="utilization" value="100" title="1-100%"/>%
+            </div>
+        </div>
+
+        <div id="instanceSizeMessage">
+            <p>
+              See <a href="https://aws.amazon.com/ec2/instance-types/">Amazon's documentation</a> for information on instance sizes.
+            </p>
+        </div>
+    </div>
+
+    <div id="chartContainer">
+        <div id="chart"></div>
+        <p id="chartMsg"><strong>Note on Heavy reserved instances:</strong> We chose to present Heavy reservations as a fixed cost rather than a sloped line because they differ in their billing from other instances—you are charged the hourly rate for use of a Heavy reserved instance <em>whether or not you are using it</em>.  With any  other reserved instance type, you are charged the up-front fee, plus a monthly bill for however many hours you used.  With a Heavy reservation, you are charged an up-front cost, plus a monthly bill for 100% usage, regardless of your actual usage.  At the moment you buy a Heavy reserved instance, you know the total cost for that entire contract. To make it easier to tell where break-even points are for usage over long time periods, we're representing Heavy instances as one fixed cost.</p>
+    </div>
 </div>
 
 <footer>
@@ -117,7 +124,7 @@
 
                 <li class="hide">
                     <label for="comment">Do Not Fill This Out</label> 
-                    
+
                     <textarea name="comment" id="comment" rows="1" cols="1"></textarea> 
                     <input type="hidden" id="idstamp" name="idstamp" value="75M7XLMtjwXObzHi/ZsvIXh3AbM6rBIdLa0i0EkLfbM="/>
                 </li>
@@ -125,13 +132,12 @@
         </form>
 
         <hr>
-    
+
         <p>
            <a href="http://palominolabs.com">Palomino Labs</a> is a product development and agile implementation consultancy based in Redwood City, California. A close-knit, highly collaborative, and enviably efficient team of experienced software developers and product strategists, we deliver higher quality products in less time. Using a Lean development approach continually and meticulously refined over six years, we can help turn any idea into reality. The more challenging the problem, the better the results.
         </p>
 
     </div>
-
 </footer>
 
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
