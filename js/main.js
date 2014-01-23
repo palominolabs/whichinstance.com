@@ -267,8 +267,12 @@ $(document).ready(function() {
         },
 
         initializeSizeDropdown = function() {
-            for (var size in instanceSizes) {
-                $("#insSize").append("<option value='" + size + "'>" + size + "</option>");
+            for (var type in instanceSizes) {
+                $("#insSize").append("<option disabled>" + type + "</option>");
+
+                for (var size in instanceSizes[type]) {
+                    $("#insSize").append("<option value='" + size + "'>" + size + "</option>");
+                }
             }
         },
 
@@ -288,10 +292,13 @@ $(document).ready(function() {
 
             // Build the sizes we know about and their instance type mappings
             $.each(onDemandData.config.regions, function(i, region) {
-                $.each(region.instanceTypes, function(j, insType) {
-                    $.each(insType.sizes, function(k, size) {
-                        instanceSizes[size.size] = true;
-                        instanceSizeToType[size.size] = insType.type;
+                $.each(region.instanceTypes, function(j, type) {
+                    $.each(type.sizes, function(k, size) {
+                        if (!(type.type in instanceSizes)) {
+                            instanceSizes[type.type] = {}
+                        }
+                        instanceSizes[type.type][size.size] = true;
+                        instanceSizeToType[size.size] = type.type;
                     });
                 });
             });
