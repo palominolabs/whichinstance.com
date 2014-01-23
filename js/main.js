@@ -252,7 +252,7 @@ $(document).ready(function() {
 
                 if (!instanceFoundSomewhere) {
                     var msg = "It doesn't appear that <strong>" + $('#region').find(':selected').text() + '</strong> has instance type <strong>' +
-                        $('#insType').find(':selected').text() + '</strong> in size <strong>' + $('#insSize').find(':selected').text() + '</strong>. '
+                        getInstanceType(getInstanceSize()) + '</strong> in size <strong>' + $('#insSize').find(':selected').text() + '</strong>. '
                         + 'Use <a href="https://aws.amazon.com/ec2/instance-types/">this page</a> for reference.';
                     $('#message').html(msg);
                 } else {
@@ -281,8 +281,8 @@ $(document).ready(function() {
         },
 
         setTitle = function() {
-            var title = $('#region').find(':selected').text() + ': ' + $('#insType').find(':selected').text() + '/' +
-                $('#insSize').find(':selected').text();
+            var sizeCode = getInstanceSize(),
+            title = $('#region').find(':selected').text() + ': ' + sizeCode;
             chart.setTitle({text: title});
         };
 
@@ -309,6 +309,7 @@ $(document).ready(function() {
 
             initializeSizeDropdown();
             updateOnDemandData();
+            setTitle();
     });
 
     $.each(['medium', 'light'], function(_, obj) {
@@ -328,7 +329,4 @@ $(document).ready(function() {
                 updateReservedData(obj, false);
             });
     });
-
-    setTitle();
-
 });
