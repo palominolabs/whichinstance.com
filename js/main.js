@@ -290,8 +290,10 @@ $(document).ready(function() {
         $(obj).change(onChange);
     });
 
-    $.getJSON('/js/linux-od.json',
-        function(data) {
+    $.ajax({
+        url: '/js/linux-od.json',
+        async: false,
+        success: function(data) {
             onDemandData = data;
 
             // Build the sizes we know about and their instance type mappings
@@ -310,23 +312,28 @@ $(document).ready(function() {
             initializeSizeDropdown();
             updateOnDemandData();
             setTitle();
+        }
     });
 
     $.each(['medium', 'light'], function(_, obj) {
-        $.getJSON('/js/linux-ri-' + obj + '.json',
-            function(data) {
+        $.ajax({
+            url: '/js/linux-ri-' + obj + '.json',
+            success: function(data) {
                 reservedData[obj] = data;
 
                 updateReservedData(obj, true);
-            });
+            }
+        });
     });
 
     $.each(['heavy'], function(_, obj) {
-        $.getJSON('/js/linux-ri-' + obj + '.json',
-            function(data) {
+        $.ajax({
+            url: '/js/linux-ri-' + obj + '.json',
+            success: function(data) {
                 reservedData[obj] = data;
 
                 updateReservedData(obj, false);
-            });
+            }
+        });
     });
 });
