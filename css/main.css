@@ -122,7 +122,7 @@ h1 span {
   width: 100%;
 }
 
-#controlsContainer, #chartContainer {
+#controlsContainer, #chartContainer, footer {
   border: 1px solid #ccc;
   border-radius: 5px;
   background: rgba(0,0,0,0.05);
@@ -138,8 +138,6 @@ h1 span {
 }
 
 #chartContainer {
-  /*float: right;*/
-  /*width: 850px;*/
   margin-left: 220px;
 }
 
@@ -192,20 +190,6 @@ h1 span {
 }
 
 
-footer {
-  clear: both;
-  margin-top:20px;
-  font-size:75%;
-  text-align:center;
-}
-
-footer p {
-  width:500px;
-  text-align:justify;
-  margin:10px auto;
-  color:#686868;
-}
-
 #spinner {
   position: absolute;
   top: 0;
@@ -230,14 +214,28 @@ footer p {
   width: 100%;
 }
 
-#form {
-  border:1px solid #ccc;
-  border-radius:5px;
-  background:rgba(0,0,0,0.05);
-  padding:20px;
-  font-family: inherit;
+
+footer {
+  clear: both;
+  width: 80%;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 85%;
+  text-align: center;
+}
+
+footer #palominoMessage {
+  float: left;
   width: 500px;
-  margin: 0 auto;
+  text-align: justify;
+  margin: 10px auto;
+  color: #686868;
+}
+
+#form {
+  font-family: inherit;
+  margin-left: 550px;
   text-align: left;
 }
 
