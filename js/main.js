@@ -268,12 +268,16 @@ $(document).ready(function() {
 
         initializeSizeDropdown = function() {
             for (var type in instanceSizes) {
-                $("#insSize").append("<option disabled>" + type + "</option>");
+                $("#insSize").append("<option disabled>" + humanizeCamelCase(type) + "</option>");
 
                 for (var size in instanceSizes[type]) {
                     $("#insSize").append("<option value='" + size + "'>" + size + "</option>");
                 }
             }
+        },
+
+        humanizeCamelCase = function(camelCase) {
+            return camelCase.charAt(0).toUpperCase() + camelCase.slice(1).replace( /([A-Z])/g, " $1" );
         },
 
         setTitle = function() {

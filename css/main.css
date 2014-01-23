@@ -112,7 +112,7 @@ h1 span {
 
 #content {
   width: 100%;
-  height: 685px;
+  margin-bottom: 10px;
 }
 
 #controlsContainer, #chartContainer, footer {
@@ -126,12 +126,12 @@ h1 span {
 #controlsContainer {
   float: left;
   padding: 0 20px 10px;
-  width: 165px;
+  width: 175px;
   margin: 0 auto;
 }
 
 #chartContainer {
-  margin-left: 220px;
+  margin-left: 230px;
 }
 
 #controlsContainer, #message {
@@ -168,7 +168,7 @@ h1 span {
 }
 
 #chart {
-  height: 642px;
+  height: 610px;
 }
 
 #heavyMessage {
@@ -213,7 +213,6 @@ footer {
 
   padding-top: 0px;
 
-  margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
 
