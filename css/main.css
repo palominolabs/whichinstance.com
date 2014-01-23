@@ -100,20 +100,19 @@ body {
 }
 
 header {
-  text-align: center;
-
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 header #title {
   font-size: 75%;
+  padding-left: 5px;
   color: #505050;
 }
 
 header #plLogo {
   position: fixed;
-  top: 5px;
-  right: 5px;
+  top: 0px;
+  right: 0px;
 }
 
 #content {
