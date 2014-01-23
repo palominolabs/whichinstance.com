@@ -95,19 +95,25 @@ textarea {
    ========================================================================== */
 
 body {
-  padding:20px;
-  background:#fbfbfb url('../img/grey.png');
+  padding: 20px;
+  background: #fbfbfb url('../img/grey.png');
 }
 
-h1 {
-  margin-top: 0;
+header {
   text-align: center;
+
+  margin-bottom: 30px;
 }
 
-h1 span {
-  display: block;
+header #title {
   font-size: 75%;
   color: #505050;
+}
+
+header #plLogo {
+  position: fixed;
+  top: 5px;
+  right: 5px;
 }
 
 #content {
