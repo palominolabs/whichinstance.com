@@ -110,14 +110,6 @@ h1 span {
   color: #505050;
 }
 
-#palominoTagline {
-  margin-top: -20px;
-  margin-bottom: 8px;
-  font-size: 90%;
-  text-align: center;
-  color: #808080;
-}
-
 #content {
   width: 100%;
 }
@@ -218,9 +210,13 @@ h1 span {
 footer {
   clear: both;
   width: 80%;
+
+  padding-top: 0px;
+
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
+
   font-size: 85%;
   text-align: center;
 }
@@ -233,45 +229,45 @@ footer #palominoMessage {
   color: #686868;
 }
 
-#form {
+footer form {
   font-family: inherit;
   margin-left: 550px;
   text-align: left;
 }
 
-#form h2 {
+footer form h2 {
   margin:0;
 }
 
-#form h2 + p {
+footer form h2 + p {
   margin-top:5px;
 }
 
-#form ul {
+footer form ul {
   padding: 0;
   margin: 15px 0 0 0;
 }
 
-#form li {
+footer form li {
   list-style: none;
   margin-top: 10px;
 }
 
-#form label {
+footer form label {
   line-height: 180%;
   font-weight: bold;
 }
 
-#form input[type=email] {
+footer form input[type=email] {
   width: 50%;
 }
 
-#form textarea {
+footer form textarea {
   width: 100%;
   box-sizing:border-box;
 }
 
-#form .hide {
+footer form .hide {
   display: none;
 }
 
